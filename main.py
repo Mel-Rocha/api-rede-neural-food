@@ -7,7 +7,7 @@ from tortoise.contrib.fastapi import register_tortoise
 from apps.docs import routes as docs_router
 from apps.auth.middlewares import AuthMiddleware
 from apps.docs.custom_openapi import custom_openapi
-from apps.nutrition import routes as semitrailer_router
+from apps.nutrition import routes as nutrition_router
 
 load_dotenv()
 
@@ -43,7 +43,7 @@ def create_application() -> FastAPI:
 
 
     application.include_router(docs_router.router, tags=['nutrition'])
-    application.include_router(semitrailer_router.router, prefix="/nutrition", tags=['nutrition'])
+    application.include_router(nutrition_router.router, prefix="/nutrition", tags=['nutrition'])
 
     return application
 
