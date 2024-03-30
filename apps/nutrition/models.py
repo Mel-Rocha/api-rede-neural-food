@@ -4,7 +4,7 @@ from tortoise import fields, Model
 
 
 class Nutrition(Model):
-    id = fields.IntField(pk=True)
+    id = fields.UUIDField(pk=True, default=uuid.uuid4)
     NDB_No = fields.IntField()
     Shrt_Desc = fields.CharField(max_length=255)
     Water_g = fields.FloatField()

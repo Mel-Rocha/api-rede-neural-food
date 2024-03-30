@@ -16,7 +16,7 @@ def init_db(instance: FastAPI) -> None:
     register_tortoise(
         instance,
         db_url=os.getenv("DATABASE_URL"),
-        modules={"models": ["apps.nutrition.models"]},
+        modules={"models": ["apps.nutrition.models", "aerich.models"]},
         generate_schemas=True,
         add_exception_handlers=True,
     )

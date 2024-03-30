@@ -46,6 +46,8 @@ async def upload_file(file: UploadFile = File(...)):
         else:
             raise HTTPException(status_code=400, detail="Por favor, envie um arquivo Excel ou CSV válido.")
 
+        df = df.dropna()
+
         data = []
         for _, row in df.iterrows():
             nutrition = Nutrition(
@@ -107,7 +109,7 @@ async def upload_file(file: UploadFile = File(...)):
 
         await Nutrition.bulk_create(data)
         return JSONResponse(
-            content={"message": "Todos os dados foram cadastrados com sucesso"},
+            content={"message": "Todos os dados válidos foram cadastrados com sucesso"},
             status_code=201
         )
     except Exception as e:
