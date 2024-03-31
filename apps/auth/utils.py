@@ -1,7 +1,8 @@
 import os
+from datetime import datetime
+
 import json
 import hashlib
-from datetime import datetime
 
 
 SECRET_KEY = os.getenv("SECRET_KEY")

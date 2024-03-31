@@ -1,4 +1,5 @@
 import os
+
 from fastapi import FastAPI
 from dotenv import load_dotenv
 from fastapi.middleware.cors import CORSMiddleware
@@ -40,7 +41,6 @@ def create_application() -> FastAPI:
         ],
         allow_headers=["*"]
     )
-
 
     application.include_router(docs_router.router, tags=['nutrition'])
     application.include_router(nutrition_router.router, prefix="/nutrition", tags=['nutrition'])
